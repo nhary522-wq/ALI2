@@ -1,0 +1,138 @@
+{# ============ header.html : الشريط العلوي ============ #}
+<style>
+  .lh-top{background:var(--orange-deep,#b84700);color:#fff;font-size:.82rem}
+  .lh-top .lh-wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.45rem 1.25rem;flex-wrap:wrap}
+  .lh-top span{display:inline-flex;align-items:center;gap:.4rem}
+  .lh-top .lh-dot{width:8px;height:8px;border-radius:50%;background:#7CFF9B;box-shadow:0 0 0 3px rgba(124,255,155,.25)}
+  .lh-top .lh-dot.closed{background:#ff6b6b;box-shadow:0 0 0 3px rgba(255,107,107,.25)}
+
+  .lh-nav{position:sticky;top:0;z-index:100;background:rgba(8,8,8,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line,#2a2a2a);transition:background .3s,box-shadow .3s}
+  .lh-nav.scrolled{background:rgba(8,8,8,.96);box-shadow:0 10px 30px rgba(0,0,0,.55)}
+  .lh-wrap{max-width:1240px;margin:0 auto}
+  .lh-bar{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:.8rem 1.25rem}
+  .lh-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--text,#f3f1ee)}
+  .lh-logo svg{width:44px;height:44px;flex:none}
+  .lh-logo b{display:block;font-family:'Reem Kufi',sans-serif;font-size:1.45rem;line-height:1;letter-spacing:.02em}
+  .lh-logo small{display:block;color:var(--orange,#ff6a00);font-size:.72rem;margin-top:.25rem}
+
+  .lh-links{display:flex;align-items:center;gap:.25rem;list-style:none;margin:0;padding:0}
+  .lh-links a{position:relative;display:block;padding:.6rem .9rem;color:var(--muted,#b3aea6);text-decoration:none;font-weight:500;font-size:.98rem;transition:color .2s}
+  .lh-links a::after{content:"";position:absolute;inset-inline:.9rem;bottom:.2rem;height:2px;background:var(--orange,#ff6a00);transform:scaleX(0);transition:transform .25s}
+  .lh-links a:hover,.lh-links a.active{color:#fff}
+  .lh-links a:hover::after,.lh-links a.active::after{transform:scaleX(1)}
+
+  .lh-actions{display:flex;align-items:center;gap:.6rem}
+  .lh-btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:.65rem 1.3rem;border-radius:10px;font:600 .95rem 'Tajawal',sans-serif;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:transform .2s,background .2s,border-color .2s,color .2s}
+  .lh-btn.ghost{color:var(--text,#f3f1ee);border-color:var(--line,#2a2a2a);background:transparent}
+  .lh-btn.ghost:hover{border-color:var(--orange,#ff6a00);color:var(--orange,#ff6a00)}
+  .lh-btn.solid{background:linear-gradient(135deg,var(--orange-light,#ff9a3c),var(--orange,#ff6a00));color:#120800}
+  .lh-btn.solid:hover{transform:translateY(-2px)}
+  .lh-btn:focus-visible,.lh-links a:focus-visible,.lh-burger:focus-visible{outline:2px solid var(--orange-light,#ff9a3c);outline-offset:3px}
+
+  .lh-burger{display:none;width:44px;height:44px;border-radius:10px;border:1px solid var(--line,#2a2a2a);background:transparent;cursor:pointer;position:relative}
+  .lh-burger span,.lh-burger span::before,.lh-burger span::after{position:absolute;inset-inline:11px;height:2px;background:#fff;border-radius:2px;transition:transform .25s,top .25s,background .2s;content:""}
+  .lh-burger span{top:21px}
+  .lh-burger span::before{top:-7px;inset-inline:0}
+  .lh-burger span::after{top:7px;inset-inline:0}
+  .lh-burger span{inset-inline:11px}
+  .lh-burger[aria-expanded="true"] span{background:transparent}
+  .lh-burger[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
+  .lh-burger[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+
+  .lh-drawer{display:none}
+  @media (max-width:980px){
+    .lh-links,.lh-actions .lh-btn.ghost{display:none}
+    .lh-burger{display:block}
+    .lh-drawer{display:block;position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .25s}
+    .lh-drawer.open{opacity:1;pointer-events:auto}
+    .lh-drawer nav{position:absolute;top:0;inset-inline-start:0;width:min(86vw,340px);height:100%;background:#0e0e0e;border-inline-end:1px solid var(--line,#2a2a2a);padding:5.5rem 1.25rem 1.5rem;display:flex;flex-direction:column;gap:.25rem;transform:translateX(100%);transition:transform .3s}
+    .lh-drawer.open nav{transform:none}
+    .lh-drawer nav a{padding:.9rem 1rem;border-radius:10px;color:var(--text,#f3f1ee);text-decoration:none;font-weight:600}
+    .lh-drawer nav a:hover{background:#1a1a1a;color:var(--orange,#ff6a00)}
+    .lh-drawer nav .lh-btn{margin-top:1rem}
+  }
+  @media (max-width:560px){.lh-top .lh-hide{display:none}.lh-actions .lh-btn.solid{padding:.6rem 1rem}}
+  @media (prefers-reduced-motion:reduce){.lh-nav *,.lh-drawer,.lh-drawer nav{transition:none!important}}
+</style>
+
+<div class="lh-top">
+  <div class="lh-wrap">
+    <span><i class="lh-dot" id="lhDot"></i><b id="lhStatus">جارٍ التحقق...</b></span>
+    <span class="lh-hide">يوميًا من 5:00 صباحًا حتى 12:00 منتصف الليل</span>
+    <span>اتصل بنا: <a href="tel:+966500000000" style="color:#fff;text-decoration:none" dir="ltr">+966 50 000 0000</a></span>
+  </div>
+</div>
+
+<header class="lh-nav" id="lhNav">
+  <div class="lh-wrap lh-bar">
+    <a class="lh-logo" href="/" aria-label="لياقة الرجل - الرئيسية">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="46" height="46" rx="12" fill="#0e0e0e" stroke="#ff6a00" stroke-width="2"/>
+        <path d="M10 20v8M14 16v16M34 16v16M38 20v8M14 24h20" stroke="#ff6a00" stroke-width="3.2" stroke-linecap="round"/>
+      </svg>
+      <span><b>لياقة الرجل</b><small>نادي رياضي متكامل</small></span>
+    </a>
+
+    <ul class="lh-links" id="lhLinks">
+      <li><a href="/#home" data-s="home">الرئيسية</a></li>
+      <li><a href="/#facilities" data-s="facilities">المرافق</a></li>
+      <li><a href="/#plans" data-s="plans">الاشتراكات</a></li>
+      <li><a href="/#classes" data-s="classes">الحصص</a></li>
+      <li><a href="/#trainers" data-s="trainers">المدربون</a></li>
+      <li><a href="/#bmi" data-s="bmi">حاسبة اللياقة</a></li>
+      <li><a href="/#contact" data-s="contact">تواصل معنا</a></li>
+    </ul>
+
+    <div class="lh-actions">
+      <a class="lh-btn ghost" href="/login">تسجيل الدخول</a>
+      <a class="lh-btn solid" href="/#plans">اشترك الآن</a>
+      <button class="lh-burger" id="lhBurger" aria-label="القائمة" aria-expanded="false" aria-controls="lhDrawer"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="lh-drawer" id="lhDrawer">
+  <nav aria-label="القائمة الجانبية">
+    <a href="/#home">الرئيسية</a>
+    <a href="/#facilities">المرافق</a>
+    <a href="/#plans">الاشتراكات</a>
+    <a href="/#classes">الحصص</a>
+    <a href="/#trainers">المدربون</a>
+    <a href="/#bmi">حاسبة اللياقة</a>
+    <a href="/#contact">تواصل معنا</a>
+    <a class="lh-btn ghost" href="/login">تسجيل الدخول</a>
+    <a class="lh-btn solid" href="/#plans">اشترك الآن</a>
+  </nav>
+</div>
+
+<script>
+(function(){
+  var nav=document.getElementById('lhNav'),burger=document.getElementById('lhBurger'),drawer=document.getElementById('lhDrawer');
+
+  // ظل الشريط عند التمرير
+  function onScroll(){nav.classList.toggle('scrolled',window.scrollY>10)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // القائمة الجانبية للجوال
+  function setDrawer(open){drawer.classList.toggle('open',open);burger.setAttribute('aria-expanded',open);document.body.style.overflow=open?'hidden':''}
+  burger.addEventListener('click',function(){setDrawer(!drawer.classList.contains('open'))});
+  drawer.addEventListener('click',function(e){if(e.target===drawer||e.target.tagName==='A')setDrawer(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setDrawer(false)});
+
+  // تمييز الرابط النشط حسب القسم
+  var links=document.querySelectorAll('#lhLinks a');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting){links.forEach(function(a){a.classList.toggle('active',a.dataset.s===en.target.id)})}
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    ['home','facilities','plans','classes','trainers','bmi','contact'].forEach(function(id){var s=document.getElementById(id);if(s)io.observe(s)});
+  }
+
+  // حالة النادي (مفتوح / مغلق)
+  var h=new Date().getHours(),open=h>=5; // من 5 صباحًا حتى 12 منتصف الليل
+  document.getElementById('lhStatus').textContent=open?'النادي مفتوح الآن':'النادي مغلق الآن - نفتح 5:00 صباحًا';
+  document.getElementById('lhDot').classList.toggle('closed',!open);
+})();
+</script>

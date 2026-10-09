@@ -1,0 +1,126 @@
+{# ============ footer.html : الشريط السفلي ============ #}
+<style>
+  .lf{background:#050505;border-top:1px solid var(--line,#2a2a2a);color:var(--muted,#b3aea6);position:relative}
+  .lf::before{content:"";position:absolute;top:-1px;inset-inline:0;height:2px;background:linear-gradient(90deg,transparent,var(--orange,#ff6a00),transparent)}
+  .lf-wrap{max-width:1240px;margin:0 auto;padding:4rem 1.25rem 2rem}
+  .lf-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:2.5rem}
+  .lf h4{margin:0 0 1.1rem;color:var(--text,#f3f1ee);font:600 1.05rem 'Reem Kufi',sans-serif}
+  .lf p{line-height:1.9;margin:.4rem 0;font-size:.95rem}
+  .lf ul{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+  .lf a{color:inherit;text-decoration:none;transition:color .2s}
+  .lf a:hover{color:var(--orange,#ff6a00)}
+  .lf a:focus-visible,.lf button:focus-visible,.lf input:focus-visible{outline:2px solid var(--orange-light,#ff9a3c);outline-offset:3px}
+  .lf-brand b{display:block;font:700 1.7rem 'Reem Kufi',sans-serif;color:var(--text,#f3f1ee)}
+  .lf-brand em{font-style:normal;color:var(--orange,#ff6a00)}
+  .lf-social{display:flex;gap:.6rem;margin-top:1.2rem}
+  .lf-social a{width:42px;height:42px;border-radius:50%;border:1px solid var(--line,#2a2a2a);display:grid;place-items:center;transition:background .2s,border-color .2s,color .2s}
+  .lf-social a:hover{background:var(--orange,#ff6a00);border-color:var(--orange,#ff6a00);color:#120800}
+  .lf-social svg{width:18px;height:18px;fill:currentColor}
+  .lf-hours li{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px dashed #222;padding-bottom:.5rem;font-size:.93rem}
+  .lf-hours li b{color:var(--text,#f3f1ee);font-weight:500}
+  .lf-news{display:flex;margin-top:1rem;border:1px solid var(--line,#2a2a2a);border-radius:12px;overflow:hidden;background:#0c0c0c}
+  .lf-news input{flex:1;min-width:0;background:transparent;border:0;color:#fff;padding:.8rem 1rem;font:inherit}
+  .lf-news button{border:0;background:var(--orange,#ff6a00);color:#120800;font:700 .92rem 'Tajawal',sans-serif;padding:0 1.2rem;cursor:pointer}
+  .lf-news button:hover{background:var(--orange-light,#ff9a3c)}
+  .lf-msg{min-height:1.4rem;font-size:.85rem;color:var(--orange-light,#ff9a3c);margin-top:.5rem}
+  .lf-pay{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
+  .lf-pay span{border:1px solid var(--line,#2a2a2a);border-radius:8px;padding:.25rem .7rem;font-size:.78rem;color:#cfc9bf}
+  .lf-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid #1b1b1b;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;font-size:.88rem}
+  .lf-bottom nav{display:flex;gap:1.4rem;flex-wrap:wrap}
+
+  .lf-fab{position:fixed;bottom:1.25rem;inset-inline-start:1.25rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
+  .lf-fab a,.lf-fab button{width:52px;height:52px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.5);transition:transform .2s}
+  .lf-fab a:hover,.lf-fab button:hover{transform:translateY(-3px)}
+  .lf-fab .wa{background:#25D366;color:#fff}
+  .lf-fab .top{background:#161616;color:var(--orange,#ff6a00);border:1px solid var(--line,#2a2a2a);opacity:0;pointer-events:none;transition:opacity .25s,transform .2s}
+  .lf-fab .top.show{opacity:1;pointer-events:auto}
+  .lf-fab svg{width:24px;height:24px;fill:currentColor}
+  .lf-fab .top svg{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+  @media (max-width:980px){.lf-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.lf-grid{grid-template-columns:1fr}.lf-bottom{justify-content:center;text-align:center}}
+</style>
+
+<footer class="lf" id="contact">
+  <div class="lf-wrap">
+    <div class="lf-grid">
+      <div class="lf-brand">
+        <b>لياقة <em>الرجل</em></b>
+        <p>نادٍ رياضي متكامل للرجال: أجهزة حديثة، مسبح، جاكوزي ساخن وبارد، وساونا وبخار، ومدربون معتمدون يرافقونك حتى تصل إلى هدفك.</p>
+        <div class="lf-social">
+          <a href="#" aria-label="إنستغرام"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.5 6a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></svg></a>
+          <a href="#" aria-label="إكس (تويتر)"><svg viewBox="0 0 24 24"><path d="M18.2 2H21l-6.5 7.4L22 22h-6l-4.7-6.1L5.9 22H3l7-8L2.6 2h6.1l4.2 5.6L18.2 2zm-1 18h1.6L7.9 3.9H6.2L17.2 20z"/></svg></a>
+          <a href="#" aria-label="سناب شات"><svg viewBox="0 0 24 24"><path d="M12 2c3 0 5 2 5 5v2.2c.4.1 1 .2 1.7.3.6.1.8.8.3 1.2-.5.4-1.2.6-1.6.8.5 1.6 1.7 2.7 3.1 3.3.4.2.4.8-.1 1-.8.3-1.5.4-1.9.5-.2.4-.3.9-.7 1-.6.1-1.4-.3-2.3.1-1 .5-1.7 1.6-3.5 1.6s-2.5-1.1-3.5-1.6c-.9-.4-1.7 0-2.3-.1-.4-.1-.5-.6-.7-1-.4-.1-1.1-.2-1.9-.5-.5-.2-.5-.8-.1-1 1.4-.6 2.6-1.7 3.1-3.3-.4-.2-1.1-.4-1.6-.8-.5-.4-.3-1.1.3-1.2.7-.1 1.3-.2 1.7-.3V7c0-3 2-5 5-5z"/></svg></a>
+          <a href="#" aria-label="يوتيوب"><svg viewBox="0 0 24 24"><path d="M22 8.2a3 3 0 0 0-2.1-2.1C18 5.6 12 5.6 12 5.6s-6 0-7.9.5A3 3 0 0 0 2 8.2 31 31 0 0 0 1.6 12 31 31 0 0 0 2 15.8a3 3 0 0 0 2.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .4-3.8 31 31 0 0 0-.4-3.8zM10 15V9l5.2 3z"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="/#facilities">المرافق</a></li>
+          <li><a href="/#plans">الاشتراكات</a></li>
+          <li><a href="/#classes">جدول الحصص</a></li>
+          <li><a href="/#trainers">المدربون</a></li>
+          <li><a href="/#bmi">حاسبة اللياقة</a></li>
+          <li><a href="/#faq">الأسئلة الشائعة</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>ساعات العمل</h4>
+        <ul class="lf-hours">
+          <li><b>السبت - الخميس</b><span>5:00 ص - 12:00 م</span></li>
+          <li><b>الجمعة</b><span>1:00 م - 12:00 م</span></li>
+          <li><b>المسبح</b><span>6:00 ص - 11:00 م</span></li>
+          <li><b>الساونا والجاكوزي</b><span>6:00 ص - 11:30 م</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>تواصل معنا</h4>
+        <p>الرياض، المملكة العربية السعودية</p>
+        <p dir="ltr" style="text-align:right"><a href="tel:+966500000000">+966 50 000 0000</a></p>
+        <p><a href="mailto:info@liyaqat-alrajul.com">info@liyaqat-alrajul.com</a></p>
+        <form class="lf-news" id="lfNews" novalidate>
+          <input type="email" id="lfEmail" placeholder="بريدك الإلكتروني" aria-label="البريد الإلكتروني" autocomplete="email">
+          <button type="submit">اشترك</button>
+        </form>
+        <div class="lf-msg" id="lfMsg" role="status"></div>
+        <div class="lf-pay"><span>مدى</span><span>Visa</span><span>Mastercard</span><span>Apple Pay</span><span>تحويل بنكي</span></div>
+      </div>
+    </div>
+
+    <div class="lf-bottom">
+      <span>© <span id="lfYear"></span> لياقة الرجل. جميع الحقوق محفوظة.</span>
+      <nav>
+        <a href="/privacy">سياسة الخصوصية</a>
+        <a href="/terms">الشروط والأحكام</a>
+        <a href="/refund">سياسة الاسترجاع</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<div class="lf-fab">
+  <button class="top" id="lfTop" aria-label="العودة للأعلى"><svg viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg></button>
+  <a class="wa" href="https://wa.me/966500000000" target="_blank" rel="noopener" aria-label="واتساب"><svg viewBox="0 0 24 24"><path d="M12 2.5a9.5 9.5 0 0 0-8.1 14.4L2.8 21.2l4.4-1.1A9.5 9.5 0 1 0 12 2.5zm-3 5.2c.2-.4.4-.4.6-.4h.5c.2 0 .4.1.5.4l.8 1.9c.1.2 0 .4-.1.6l-.5.6c-.1.2-.2.3-.1.5.6 1 1.5 1.8 2.6 2.3.2.1.4.1.5-.1l.7-.9c.1-.2.3-.2.5-.1l1.8.9c.2.1.3.2.3.4 0 .5-.2 1.1-.7 1.5-.5.4-1.2.60-1.9.4-3-.8-5-2.8-5.9-5.2-.2-.6 0-1.3.4-1.7z"/></svg></a>
+</div>
+
+<script>
+(function(){
+  document.getElementById('lfYear').textContent=new Date().getFullYear();
+
+  var top=document.getElementById('lfTop');
+  window.addEventListener('scroll',function(){top.classList.toggle('show',window.scrollY>600)},{passive:true});
+  top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+
+  var form=document.getElementById('lfNews'),msg=document.getElementById('lfMsg');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=document.getElementById('lfEmail').value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){msg.textContent='أدخل بريدًا إلكترونيًا صحيحًا مثل name@example.com';return}
+    msg.textContent='تم الاشتراك. ستصلك عروضنا على بريدك.';form.reset();
+  });
+})();
+</script>

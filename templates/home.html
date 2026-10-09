@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لياقة الرجل | نادي رياضي متكامل للرجال</title>
+<meta name="description" content="نادي لياقة الرجل: أجهزة حديثة، مسبح، جاكوزي ساخن وبارد، ساونا وبخار، ومدربون معتمدون.">
+<meta name="theme-color" content="#080808">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --black:#080808; --surface:#101010; --surface-2:#171717; --line:#2a2a2a;
+    --orange:#ff6a00; --orange-light:#ff9a3c; --orange-deep:#b84700;
+    --text:#f3f1ee; --muted:#b3aea6;
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  body{margin:0;background:var(--black);color:var(--text);font-family:'Tajawal',system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+  img,svg{max-width:100%}
+  a{color:inherit}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 1.25rem}
+  section{padding:6rem 0}
+  h1,h2,h3{font-family:'Reem Kufi','Tajawal',sans-serif;margin:0;line-height:1.2}
+  .sec-head{max-width:640px;margin-bottom:3rem}
+  .sec-head h2{font-size:clamp(1.9rem,4vw,2.8rem)}
+  .sec-head p{color:var(--muted);margin:.8rem 0 0;font-size:1.05rem}
+  .sec-head.center{margin-inline:auto;text-align:center}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.9rem 1.8rem;border-radius:12px;font:700 1rem 'Tajawal',sans-serif;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:transform .2s,background .2s,border-color .2s,color .2s}
+  .btn-solid{background:linear-gradient(135deg,var(--orange-light),var(--orange));color:#120800}
+  .btn-solid:hover{transform:translateY(-3px)}
+  .btn-line{border-color:#3a3a3a;color:var(--text);background:transparent}
+  .btn-line:hover{border-color:var(--orange);color:var(--orange)}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--orange-light);outline-offset:3px}
+  .icon{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+  /* ========== البطل ========== */
+  .hero{padding:5rem 0 6rem;position:relative;overflow:hidden;background:
+    radial-gradient(900px 480px at 85% -10%,rgba(255,106,0,.20),transparent 60%),
+    radial-gradient(700px 400px at 0% 100%,rgba(255,106,0,.10),transparent 60%),var(--black)}
+  .hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(to bottom,#000 30%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 30%,transparent);pointer-events:none}
+  .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:3.5rem;align-items:center}
+  .hero h1{font-size:clamp(2.6rem,6.2vw,4.8rem);font-weight:700}
+  .hero h1 span{display:block;color:var(--orange)}
+  .hero p.lead{font-size:1.2rem;color:var(--muted);max-width:540px;margin:1.5rem 0 2.2rem}
+  .hero .cta{display:flex;gap:.9rem;flex-wrap:wrap}
+  .hero .perks{display:flex;gap:1.8rem;flex-wrap:wrap;margin-top:2.6rem;color:var(--muted);font-size:.95rem}
+  .hero .perks b{color:var(--text)}
+
+  .live{background:linear-gradient(180deg,#151515,#0d0d0d);border:1px solid var(--line);border-radius:24px;padding:1.8rem;box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(255,106,0,.08) inset}
+  .live-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.4rem}
+  .live-head h3{font-size:1.25rem}
+  .live-head small{color:var(--muted)}
+  .gauge{display:grid;place-items:center;margin-bottom:1.4rem}
+  .gauge svg{width:190px;height:190px;transform:rotate(-90deg)}
+  .gauge circle{fill:none;stroke-width:12;stroke-linecap:round}
+  .gauge .bg{stroke:#222}
+  .gauge .fg{stroke:var(--orange);stroke-dasharray:502;stroke-dashoffset:502;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)}
+  .gauge-txt{position:absolute;text-align:center}
+  .gauge-txt b{font:700 2.4rem 'Reem Kufi',sans-serif;display:block;line-height:1}
+  .gauge-txt span{color:var(--muted);font-size:.85rem}
+  .gauge-wrap{position:relative;display:grid;place-items:center}
+  .temps{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
+  .temp{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:.9rem .5rem;text-align:center}
+  .temp b{font:700 1.5rem 'Reem Kufi',sans-serif;display:block;line-height:1.1}
+  .temp span{font-size:.8rem;color:var(--muted)}
+  .temp.hot b{color:#ff8a3c}.temp.cold b{color:#6fd3ff}.temp.pool b{color:#5ee0c4}
+
+  /* ========== الإحصائيات ========== */
+  .stats{padding:0;border-block:1px solid var(--line);background:var(--surface)}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{padding:2.2rem 1rem;text-align:center;border-inline-start:1px solid var(--line)}
+  .stat:first-child{border-inline-start:0}
+  .stat b{font:700 2.6rem 'Reem Kufi',sans-serif;color:var(--orange);display:block;line-height:1}
+  .stat span{color:var(--muted)}
+
+  /* ========== المرافق ========== */
+  .fac-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+  .fac{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;transition:border-color .25s,transform .25s,background .25s}
+  .fac:hover{border-color:var(--orange);transform:translateY(-4px);background:#141414}
+  .fac .ic{width:54px;height:54px;border-radius:14px;background:rgba(255,106,0,.1);color:var(--orange);display:grid;place-items:center;margin-bottom:1.1rem}
+  .fac h3{font-size:1.2rem;margin-bottom:.4rem}
+  .fac p{margin:0;color:var(--muted);font-size:.94rem}
+  .fac .tag{display:inline-block;margin-top:.9rem;font-size:.78rem;color:var(--orange-light);border:1px solid rgba(255,106,0,.35);border-radius:999px;padding:.1rem .7rem}
+  .fac.wide{grid-column:span 2;background:linear-gradient(135deg,#1a0f05,#101010);border-color:rgba(255,106,0,.35)}
+
+  /* ========== الاشتراكات ========== */
+  .plans-sec{background:var(--surface)}
+  .toggle{display:inline-flex;background:#0b0b0b;border:1px solid var(--line);border-radius:999px;padding:.3rem;margin-bottom:3rem}
+  .toggle button{border:0;background:transparent;color:var(--muted);font:600 .98rem 'Tajawal',sans-serif;padding:.6rem 1.4rem;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+  .toggle button[aria-pressed="true"]{background:var(--orange);color:#120800}
+  .toggle small{margin-inline-start:.3rem;font-size:.75rem}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;align-items:stretch}
+  .plan{background:var(--black);border:1px solid var(--line);border-radius:22px;padding:2.2rem 1.8rem;display:flex;flex-direction:column;position:relative}
+  .plan.featured{border-color:var(--orange);background:linear-gradient(180deg,#1b1006,#0a0a0a 60%);box-shadow:0 25px 60px rgba(255,106,0,.12);transform:translateY(-12px)}
+  .plan .badge{position:absolute;top:-14px;inset-inline-start:50%;transform:translateX(50%);background:var(--orange);color:#120800;font-weight:800;font-size:.8rem;padding:.2rem 1rem;border-radius:999px;white-space:nowrap}
+  .plan h3{font-size:1.5rem}
+  .plan .desc{color:var(--muted);font-size:.93rem;margin:.3rem 0 1.4rem}
+  .price{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.2rem}
+  .price b{font:700 3.2rem 'Reem Kufi',sans-serif;line-height:1}
+  .price span{color:var(--muted)}
+  .per{color:var(--orange-light);font-size:.88rem;min-height:1.4rem;margin-bottom:1.4rem}
+  .plan ul{list-style:none;margin:0 0 2rem;padding:0;display:grid;gap:.7rem;flex:1}
+  .plan li{display:flex;gap:.6rem;align-items:flex-start;font-size:.96rem}
+  .plan li::before{content:"";flex:none;width:18px;height:18px;margin-top:.25rem;border-radius:50%;background:var(--orange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23120800' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/12px no-repeat}
+  .plan li.off{color:#6d6a65}
+  .plan li.off::before{background-color:#262626;background-image:none}
+  .plan .btn{width:100%}
+  .note{text-align:center;color:var(--muted);margin-top:2.2rem;font-size:.92rem}
+
+  /* ========== الحصص ========== */
+  .tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.6rem}
+  .tabs button{border:1px solid var(--line);background:transparent;color:var(--muted);font:600 .95rem 'Tajawal',sans-serif;padding:.55rem 1.2rem;border-radius:999px;cursor:pointer;transition:all .2s}
+  .tabs button[aria-selected="true"]{background:var(--orange);border-color:var(--orange);color:#120800}
+  .sched{display:grid;gap:.7rem}
+  .row{display:grid;grid-template-columns:110px 1fr auto auto;gap:1.2rem;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1rem 1.3rem}
+  .row time{font:700 1.2rem 'Reem Kufi',sans-serif;color:var(--orange)}
+  .row h3{font-size:1.1rem}
+  .row small{color:var(--muted)}
+  .row .lvl{font-size:.8rem;border:1px solid var(--line);border-radius:999px;padding:.1rem .8rem;color:var(--muted)}
+  .row button{border:1px solid var(--orange);background:transparent;color:var(--orange);font:700 .9rem 'Tajawal',sans-serif;border-radius:10px;padding:.45rem 1.1rem;cursor:pointer;transition:all .2s}
+  .row button:hover{background:var(--orange);color:#120800}
+  .row button.done{background:#1f1f1f;border-color:#333;color:var(--muted);cursor:default}
+
+  /* ========== المدربون ========== */
+  .tr-sec{background:var(--surface)}
+  .trainers{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+  .tr{background:var(--black);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;text-align:center}
+  .tr .av{width:92px;height:92px;border-radius:50%;margin:0 auto 1rem;display:grid;place-items:center;font:700 2rem 'Reem Kufi',sans-serif;color:#120800;background:linear-gradient(135deg,var(--orange-light),var(--orange-deep));box-shadow:0 0 0 4px #141414,0 0 0 5px var(--orange)}
+  .tr h3{font-size:1.2rem}
+  .tr .role{color:var(--orange-light);font-size:.9rem}
+  .tr p{color:var(--muted);font-size:.9rem;margin:.6rem 0 0}
+
+  /* ========== حاسبة اللياقة ========== */
+  .bmi{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;background:linear-gradient(135deg,#1a0f05,#0d0d0d);border:1px solid rgba(255,106,0,.3);border-radius:28px;padding:3rem}
+  .bmi form{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .field{display:grid;gap:.4rem}
+  .field label{font-size:.9rem;color:var(--muted)}
+  .field input,.field select{width:100%;background:#0b0b0b;border:1px solid #333;border-radius:12px;color:#fff;padding:.8rem 1rem;font:inherit}
+  .field input:focus,.field select:focus{border-color:var(--orange)}
+  .bmi .btn{grid-column:span 2}
+  .bmi-out{margin-top:1.4rem;padding:1.2rem 1.4rem;border:1px dashed rgba(255,106,0,.45);border-radius:14px;color:var(--muted);min-height:96px}
+  .bmi-out b{display:block;font:700 2rem 'Reem Kufi',sans-serif;color:var(--orange)}
+
+  /* ========== آراء الأعضاء ========== */
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+  .q{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem}
+  .q p{margin:0 0 1.2rem;line-height:1.9}
+  .q footer{display:flex;align-items:center;gap:.8rem;color:var(--muted);font-size:.9rem}
+  .q footer i{width:38px;height:38px;border-radius:50%;background:#222;color:var(--orange);display:grid;place-items:center;font:700 1rem 'Reem Kufi',sans-serif;font-style:normal}
+  .q footer b{color:var(--text);display:block}
+  .stars{color:var(--orange);letter-spacing:2px;margin-bottom:.8rem}
+
+  /* ========== الأسئلة الشائعة ========== */
+  .faq-sec{background:var(--surface)}
+  .faq{max-width:820px;margin:0 auto;display:grid;gap:.7rem}
+  .faq details{background:var(--black);border:1px solid var(--line);border-radius:14px;padding:0 1.4rem}
+  .faq details[open]{border-color:rgba(255,106,0,.5)}
+  .faq summary{cursor:pointer;list-style:none;padding:1.2rem 0;font-weight:700;display:flex;justify-content:space-between;gap:1rem}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--orange);font-size:1.5rem;line-height:1;transition:transform .2s}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq details p{margin:0 0 1.2rem;color:var(--muted)}
+
+  /* ========== نافذة الاشتراك ========== */
+  .modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;padding:1rem}
+  .modal.open{display:flex}
+  .modal-box{width:min(480px,100%);background:#111;border:1px solid var(--line);border-radius:24px;padding:2rem;position:relative;max-height:92vh;overflow:auto}
+  .modal-box h3{font-size:1.5rem;margin-bottom:.3rem}
+  .modal-box>p{color:var(--muted);margin:0 0 1.4rem}
+  .modal-box form{display:grid;gap:1rem}
+  .close{position:absolute;top:1rem;inset-inline-end:1rem;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:transparent;color:#fff;font-size:1.3rem;cursor:pointer}
+  .ok{text-align:center;padding:1rem 0}
+  .ok .tick{width:70px;height:70px;margin:0 auto 1rem;border-radius:50%;background:var(--orange);color:#120800;display:grid;place-items:center}
+  .ok .tick svg{width:34px;height:34px;stroke:currentColor;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+  .sum{background:#0b0b0b;border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;display:flex;justify-content:space-between;font-weight:700}
+  .sum span:last-child{color:var(--orange)}
+
+  /* ========== حركة وصول واحدة ========== */
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+  /* ========== الاستجابة ========== */
+  @media (max-width:1024px){
+    .hero .wrap,.bmi{grid-template-columns:1fr}
+    .fac-grid,.trainers{grid-template-columns:repeat(2,1fr)}
+    .plans,.quotes{grid-template-columns:1fr}
+    .plan.featured{transform:none}
+    .stats .wrap{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(3){border-inline-start:0}
+    .stat:nth-child(n+3){border-top:1px solid var(--line)}
+  }
+  @media (max-width:640px){
+    section{padding:4rem 0}
+    .fac-grid,.trainers{grid-template-columns:1fr}
+    .fac.wide{grid-column:auto}
+    .row{grid-template-columns:1fr auto;gap:.5rem}
+    .row .lvl{display:none}
+    .bmi{padding:1.6rem}
+    .bmi form{grid-template-columns:1fr}.bmi .btn{grid-column:auto}
+    .toggle{display:flex}.toggle button{flex:1;padding:.6rem .4rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- استدعاء الشريط العلوي من قالبه المنفصل -->
+{% include 'header.html' %}
+
+<main>
+  <!-- ======================= البطل ======================= -->
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div>
+        <h1>ابنِ جسدًا يليق بطموحك <span>في نادٍ يليق بك</span></h1>
+        <p class="lead">أجهزة حديثة، مدربون معتمدون، ومسبح وجاكوزي ساخن وبارد وساونا. كل ما تحتاجه للياقتك وراحتك في مكان واحد.</p>
+        <div class="cta">
+          <a class="btn btn-solid" href="#plans">اختر اشتراكك</a>
+          <a class="btn btn-line" href="#facilities">تعرّف على المرافق</a>
+        </div>
+        <div class="perks">
+          <span><b>تجربة مجانية</b> ليوم كامل</span>
+          <span><b>تجميد</b> الاشتراك عند السفر</span>
+          <span><b>خزائن</b> خاصة لكل عضو</span>
+        </div>
+      </div>
+
+      <aside class="live" aria-label="حالة النادي الآن">
+        <div class="live-head"><h3>حالة النادي الآن</h3><small id="liveTime"></small></div>
+        <div class="gauge-wrap gauge">
+          <svg viewBox="0 0 180 180" aria-hidden="true"><circle class="bg" cx="90" cy="90" r="80"/><circle class="fg" id="gaugeFg" cx="90" cy="90" r="80"/></svg>
+          <div class="gauge-txt"><b id="gaugeNum">0%</b><span id="gaugeLbl">نسبة الازدحام</span></div>
+        </div>
+        <div class="temps">
+          <div class="temp pool"><b>28°</b><span>المسبح</span></div>
+          <div class="temp hot"><b>40°</b><span>جاكوزي ساخن</span></div>
+          <div class="temp cold"><b>12°</b><span>جاكوزي بارد</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ======================= الإحصائيات ======================= -->
+  <section class="stats" aria-label="أرقام النادي">
+    <div class="wrap">
+      <div class="stat"><b data-count="3500">0</b><span>عضو نشط</span></div>
+      <div class="stat"><b data-count="25">0</b><span>مدرب معتمد</span></div>
+      <div class="stat"><b data-count="60">0</b><span>حصة أسبوعية</span></div>
+      <div class="stat"><b data-count="6000">0</b><span>متر مربع</span></div>
+    </div>
+  </section>
+
+  <!-- ======================= المرافق ======================= -->
+  <section id="facilities">
+    <div class="wrap">
+      <div class="sec-head"><h2>مرافق متكاملة تحت سقف واحد</h2><p>من الحديد إلى الاستشفاء، كل ما يحتاجه جسدك قبل التمرين وبعده.</p></div>
+      <div class="fac-grid">
+        <article class="fac wide">
+          <div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M2 18c2 0 2-1.5 4-1.5S8 18 10 18s2-1.5 4-1.5S16 18 18 18s2-1.5 4-1.5M2 13c2 0 2-1.5 4-1.5S8 13 10 13s2-1.5 4-1.5S16 13 18 13s2-1.5 4-1.5M8 10V5.5a2 2 0 1 1 4 0M14 10V5.5a2 2 0 1 1 4 0"/></svg></div>
+          <h3>المسبح شبه الأولمبي</h3>
+          <p>مسبح داخلي بمسارات للسباحة الحرة وأخرى للتعليم، بدرجة حرارة ثابتة 28° على مدار العام.</p>
+          <span class="tag">مياه معالَجة بالأوزون</span>
+        </article>
+        <article class="fac">
+          <div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 2.5 1.5 2.5C11 8 10.5 5.5 12 3z"/></svg></div>
+          <h3>جاكوزي ساخن</h3>
+          <p>40° لإرخاء العضلات وتنشيط الدورة الدموية.</p>
+        </article>
+        <article class="fac">
+          <div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2v20M4.9 7l14.2 10M19.1 7L4.9 17M9 4l3 2 3-2M9 20l3-2 3 2"/></svg></div>
+          <h3>جاكوزي بارد</h3>
+          <p>12° للاستشفاء السريع وتخفيف الالتهاب بعد التمارين الشاقة.</p>
+        </article>
+        <article class="fac">
+          <div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M6 8v8M3 10v4M18 8v8M21 10v4M6 12h12"/></svg></div>
+          <h3>صالة الأوزان</h3>
+          <p>أجهزة حديثة وأوزان حرة تغطي كل مستويات التدريب.</p>
+        </article>
+        <article class="fac">
+          <div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18v12H3zM7 10v4M11 10v4M15 10v4"/></svg></div>
+          <h3>الساونا والبخار</h3>
+          <p>غرف جافة وبخارية منفصلة لكل منها بيئتها الخاصة.</p>
+        </article>
+        <article class="fac">
+          <div class="ic"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>كارديو وحصص جماعية</h3>
+          <p>استوديوهات مجهزة للملاكمة واليوغا والسبينينغ والتدريب الوظيفي.</p>
+        </article>
+        <article class="fac">
+          <div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M4 21V9l8-6 8 6v12M9 21v-6h6v6"/></svg></div>
+          <h3>غرف تبديل فاخرة</h3>
+          <p>خزائن ذكية، دشات، ومناشف نظيفة في كل زيارة.</p>
+        </article>
+        <article class="fac">
+          <div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M5 11h14v4a6 6 0 0 1-6 6h-2a6 6 0 0 1-6-6zM8 3v4M12 3v4M16 3v4"/></svg></div>
+          <h3>بار البروتين</h3>
+          <p>مشروبات ووجبات صحية جاهزة بإشراف أخصائي تغذية.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= الاشتراكات ======================= -->
+  <section class="plans-sec" id="plans">
+    <div class="wrap">
+      <div class="sec-head center"><h2>اشتراكات تناسب هدفك</h2><p>اختر المدة التي تناسبك، وكلما طالت المدة وفّرت أكثر.</p></div>
+      <div style="text-align:center">
+        <div class="toggle" role="group" aria-label="مدة الاشتراك">
+          <button data-m="1" aria-pressed="true">شهري</button>
+          <button data-m="3" aria-pressed="false">3 أشهر <small>وفّر 10%</small></button>
+          <button data-m="12" aria-pressed="false">سنوي <small>وفّر 25%</small></button>
+        </div>
+      </div>
+
+      <div class="plans">
+        <article class="plan" data-base="199" data-name="الفضي">
+          <h3>الفضي</h3><p class="desc">للبداية بثبات.</p>
+          <div class="price"><b>0</b><span>ر.س</span></div><div class="per"></div>
+          <ul>
+            <li>صالة الأوزان والكارديو</li>
+            <li>غرف التبديل والخزائن</li>
+            <li>حصص جماعية (4 شهريًا)</li>
+            <li class="off">المسبح</li>
+            <li class="off">الجاكوزي الساخن والبارد</li>
+            <li class="off">الساونا والبخار</li>
+          </ul>
+          <a class="btn btn-line" href="#" data-join>اشترك في الفضي</a>
+        </article>
+
+        <article class="plan featured" data-base="349" data-name="الذهبي">
+          <span class="badge">الأكثر طلبًا</span>
+          <h3>الذهبي</h3><p class="desc">تدريب واستشفاء بلا حدود تقريبًا.</p>
+          <div class="price"><b>0</b><span>ر.س</span></div><div class="per"></div>
+          <ul>
+            <li>كل مزايا الفضي</li>
+            <li>المسبح بدون حد للزيارات</li>
+            <li>الجاكوزي الساخن والبارد</li>
+            <li>الحصص الجماعية بلا حد</li>
+            <li>برنامج تدريب شخصي مبدئي</li>
+            <li class="off">الساونا والبخار الخاص</li>
+          </ul>
+          <a class="btn btn-solid" href="#" data-join>اشترك في الذهبي</a>
+        </article>
+
+        <article class="plan" data-base="599" data-name="البلاتيني">
+          <h3>البلاتيني</h3><p class="desc">تجربة النخبة الكاملة.</p>
+          <div class="price"><b>0</b><span>ر.س</span></div><div class="per"></div>
+          <ul>
+            <li>كل مزايا الذهبي</li>
+            <li>الساونا والبخار بدون حد</li>
+            <li>4 جلسات تدريب شخصي شهريًا</li>
+            <li>خطة تغذية وقياس InBody شهري</li>
+            <li>خزانة خاصة ومناشف مميزة</li>
+            <li>أولوية الحجز وإحضار ضيف شهريًا</li>
+          </ul>
+          <a class="btn btn-line" href="#" data-join>اشترك في البلاتيني</a>
+        </article>
+      </div>
+      <p class="note">الأسعار شاملة الضريبة. يمكنك تجميد الاشتراك حتى 30 يومًا، والترقية بين الباقات في أي وقت.</p>
+    </div>
+  </section>
+
+  <!-- ======================= الحصص ======================= -->
+  <section id="classes">
+    <div class="wrap">
+      <div class="sec-head"><h2>جدول الحصص الأسبوعي</h2><p>احجز مقعدك قبل بدء الحصة بساعتين على الأقل.</p></div>
+      <div class="tabs" role="tablist" id="dayTabs"></div>
+      <div class="sched" id="sched" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ======================= المدربون ======================= -->
+  <section class="tr-sec" id="trainers">
+    <div class="wrap">
+      <div class="sec-head"><h2>مدربون يرافقونك حتى الهدف</h2><p>خبرة وشهادات معتمدة، ومتابعة حقيقية وليست مجرد جدول تمارين.</p></div>
+      <div class="trainers">
+        <article class="tr"><div class="av">خ</div><h3>كابتن خالد العتيبي</h3><div class="role">بناء العضلات</div><p>12 سنة خبرة. بطل المنطقة الوسطى في كمال الأجسام.</p></article>
+        <article class="tr"><div class="av">ف</div><h3>كابتن فهد الحربي</h3><div class="role">خسارة الوزن واللياقة</div><p>مدرب معتمد ومتخصص في برامج الحمية والتحمل.</p></article>
+        <article class="tr"><div class="av">ن</div><h3>كابتن ناصر الدوسري</h3><div class="role">الملاكمة والقتال</div><p>مدرب ملاكمة ومواي تاي بخبرة تنافسية دولية.</p></article>
+        <article class="tr"><div class="av">س</div><h3>كابتن سلطان القحطاني</h3><div class="role">السباحة والاستشفاء</div><p>مدرب سباحة وأخصائي علاج طبيعي رياضي.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= حاسبة اللياقة ======================= -->
+  <section id="bmi">
+    <div class="wrap">
+      <div class="bmi">
+        <div>
+          <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem)">اعرف نقطة البداية</h2>
+          <p style="color:var(--muted);margin:.8rem 0 0">احسب مؤشر كتلة الجسم وسعراتك اليومية التقريبية، ثم احجز قياس InBody مجانيًا مع مدربك.</p>
+          <div class="bmi-out" id="bmiOut" aria-live="polite">أدخل بياناتك واضغط «احسب».</div>
+        </div>
+        <form id="bmiForm" novalidate>
+          <div class="field"><label for="age">العمر (سنة)</label><input id="age" type="number" min="14" max="90" placeholder="28"></div>
+          <div class="field"><label for="goal">هدفك</label>
+            <select id="goal"><option value="-400">خسارة وزن</option><option value="0" selected>الحفاظ على الوزن</option><option value="350">بناء عضلات</option></select></div>
+          <div class="field"><label for="wt">الوزن (كجم)</label><input id="wt" type="number" min="30" max="250" placeholder="80"></div>
+          <div class="field"><label for="ht">الطول (سم)</label><input id="ht" type="number" min="120" max="230" placeholder="175"></div>
+          <button class="btn btn-solid" type="submit">احسب</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= آراء الأعضاء ======================= -->
+  <section class="plans-sec" style="padding-top:5rem">
+    <div class="wrap">
+      <div class="sec-head center"><h2>ماذا يقول أعضاؤنا</h2></div>
+      <div class="quotes">
+        <figure class="q" style="margin:0"><div class="stars" aria-label="5 من 5">★★★★★</div><p>الجاكوزي البارد بعد التمرين غيّر طريقة تعافيي. النظافة والتنظيم في مستوى عالٍ.</p><footer><i>م</i><span><b>محمد الشمري</b>عضو ذهبي</span></footer></figure>
+        <figure class="q" style="margin:0"><div class="stars" aria-label="5 من 5">★★★★★</div><p>نزلت 14 كجم في 4 أشهر مع متابعة الكابتن فهد. البرنامج واضح والمتابعة مستمرة.</p><footer><i>ع</i><span><b>عبدالله المطيري</b>عضو بلاتيني</span></footer></figure>
+        <figure class="q" style="margin:0"><div class="stars" aria-label="5 من 5">★★★★★</div><p>المسبح وغرف التبديل ممتازة، وأوقات الحصص مناسبة لدوامي. أنصح به.</p><footer><i>ر</i><span><b>راشد الزهراني</b>عضو ذهبي</span></footer></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= الأسئلة الشائعة ======================= -->
+  <section class="faq-sec" id="faq">
+    <div class="wrap">
+      <div class="sec-head center"><h2>أسئلة شائعة</h2></div>
+      <div class="faq">
+        <details><summary>هل توجد تجربة مجانية قبل الاشتراك؟</summary><p>نعم. تحصل على زيارة تجريبية ليوم كامل مع جولة تعريفية، سجّل بياناتك من نموذج الاشتراك واختر «تجربة مجانية».</p></details>
+        <details><summary>هل يمكنني تجميد اشتراكي؟</summary><p>يمكنك تجميد الاشتراك حتى 30 يومًا لكل 6 أشهر في حالات السفر أو المرض، وتُمدَّد مدته تلقائيًا.</p></details>
+        <details><summary>هل المسبح والجاكوزي متاحان في كل الباقات؟</summary><p>المسبح والجاكوزي الساخن والبارد ضمن الباقتين الذهبية والبلاتينية، والساونا والبخار ضمن البلاتينية. يمكنك الترقية في أي وقت.</p></details>
+        <details><summary>هل يوجد موقف سيارات؟</summary><p>نعم، مواقف مجانية للأعضاء مع خدمة ركن للباقة البلاتينية.</p></details>
+        <details><summary>ما طرق الدفع المتاحة؟</summary><p>مدى، فيزا، ماستركارد، Apple Pay، والتحويل البنكي. كما يمكن التقسيط للاشتراك السنوي.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= دعوة أخيرة ======================= -->
+  <section style="padding:5rem 0">
+    <div class="wrap" style="text-align:center">
+      <h2 style="font-size:clamp(2rem,4.5vw,3.2rem)">ابدأ اليوم، فجسدك لن ينتظر غدًا</h2>
+      <p style="color:var(--muted);margin:1rem auto 2rem;max-width:520px">سجّل الآن وتواصل معك فريقنا خلال ساعة لتأكيد اشتراكك وحجز أول جلسة.</p>
+      <a class="btn btn-solid" href="#" data-join>سجّل الآن</a>
+    </div>
+  </section>
+</main>
+
+<!-- نافذة الاشتراك -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="modal-box">
+    <button class="close" id="mClose" aria-label="إغلاق">×</button>
+    <div id="mForm">
+      <h3 id="mTitle">إكمال الاشتراك</h3>
+      <p>أدخل بياناتك وسنتواصل معك لتأكيد الدفع وتفعيل العضوية.</p>
+      <form id="joinForm" novalidate>
+        <div class="field"><label for="jn">الاسم الكامل</label><input id="jn" required autocomplete="name"></div>
+        <div class="field"><label for="jp">رقم الجوال</label><input id="jp" type="tel" dir="ltr" placeholder="05XXXXXXXX" autocomplete="tel" style="text-align:right"></div>
+        <div class="field"><label for="jplan">الباقة</label><select id="jplan"><option>الفضي</option><option>الذهبي</option><option>البلاتيني</option><option>تجربة مجانية</option></select></div>
+        <div class="field"><label for="jdur">المدة</label><select id="jdur"><option value="1">شهري</option><option value="3">3 أشهر</option><option value="12">سنوي</option></select></div>
+        <div class="sum"><span>الإجمالي</span><span id="jTotal">0 ر.س</span></div>
+        <div id="jErr" role="alert" style="color:#ff8a8a;font-size:.9rem;min-height:1.2rem"></div>
+        <button class="btn btn-solid" type="submit">تأكيد الاشتراك</button>
+      </form>
+    </div>
+    <div class="ok" id="mOk" hidden>
+      <div class="tick"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
+      <h3>تم استلام طلبك</h3>
+      <p style="color:var(--muted)" id="mOkTxt"></p>
+      <button class="btn btn-line" id="mDone">حسنًا</button>
+    </div>
+  </div>
+</div>
+
+<!-- استدعاء الشريط السفلي من قالبه المنفصل -->
+{% include 'footer.html' %}
+
+<script>
+(function(){
+  var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- حالة النادي: نسبة الازدحام تقديرية حسب الساعة ---- */
+  (function(){
+    var d=new Date(),h=d.getHours(),profile=[5,5,5,5,5,15,35,50,40,30,25,25,30,30,35,45,65,85,90,80,60,40,20,10];
+    var pct=profile[h],fg=$('#gaugeFg'),num=$('#gaugeNum');
+    $('#liveTime').textContent=d.toLocaleTimeString('ar-SA',{hour:'2-digit',minute:'2-digit'});
+    $('#gaugeLbl').textContent=pct<35?'هادئ الآن':pct<70?'ازدحام متوسط':'ازدحام مرتفع';
+    setTimeout(function(){fg.style.strokeDashoffset=502-502*pct/100},200);
+    var n=0,step=Math.max(1,Math.round(pct/40)),t=setInterval(function(){n=Math.min(pct,n+step);num.textContent=n+'%';if(n>=pct)clearInterval(t)},35);
+  })();
+
+  /* ---- عدّاد الأرقام ---- */
+  var fmt=new Intl.NumberFormat('ar-SA',{useGrouping:false});
+  function count(el){
+    var to=+el.dataset.count,s=null;
+    if(reduce){el.textContent=fmt.format(to)+'+';return}
+    (function f(ts){s=s||ts;var p=Math.min((ts-s)/1400,1);el.textContent=fmt.format(Math.round(to*(1-Math.pow(1-p,3))))+(p===1?'+':'');if(p<1)requestAnimationFrame(f)})(performance.now());
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){count(e.target);io.unobserve(e.target)}})},{threshold:.6});
+    $$('[data-count]').forEach(function(el){io.observe(el)});
+  }else{$$('[data-count]').forEach(count)}
+
+  /* ---- الأسعار حسب المدة ---- */
+  var disc={1:0,3:.10,12:.25},dur=1,P=new Intl.NumberFormat('ar-SA',{useGrouping:false});
+  function planTotal(base,m){return Math.round(base*m*(1-disc[m]))}
+  function renderPrices(){
+    $$('.plan').forEach(function(p){
+      var base=+p.dataset.base,monthly=Math.round(base*(1-disc[dur]));
+      $('.price b',p).textContent=P.format(monthly);
+      $('.price span',p).textContent='ر.س / شهريًا';
+      $('.per',p).textContent=dur===1?'':'يُدفع '+P.format(planTotal(base,dur))+' ر.س كل '+(dur===3?'3 أشهر':'سنة');
+    });
+  }
+  $$('.toggle button').forEach(function(b){
+    b.addEventListener('click',function(){
+      dur=+b.dataset.m;$$('.toggle button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});renderPrices();
+    });
+  });
+  renderPrices();
+
+  /* ---- جدول الحصص ---- */
+  var days=['السبت','الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'];
+  var base=[
+    ['6:00 ص','يوغا الصباح','كابتن سلطان · استوديو 2','مبتدئ'],
+    ['7:30 ص','تدريب وظيفي HIIT','كابتن فهد · الصالة الرئيسية','متوسط'],
+    ['5:00 م','سبينينغ','كابتن خالد · استوديو 1','متوسط'],
+    ['6:30 م','ملاكمة','كابتن ناصر · حلبة الملاكمة','جميع المستويات'],
+    ['8:00 م','سباحة تدريبية','كابتن سلطان · المسبح','متقدم'],
+    ['9:30 م','تمدد واستشفاء','كابتن سلطان · استوديو 2','جميع المستويات']
+  ];
+  var tabs=$('#dayTabs'),sched=$('#sched'),booked={};
+  function showDay(i){
+    $$('button',tabs).forEach(function(b,j){b.setAttribute('aria-selected',i===j)});
+    var list=i===6?base.slice(2):base; // الجمعة يبدأ بعد الظهر
+    sched.innerHTML='';
+    list.forEach(function(c,k){
+      var key=i+'-'+k,row=document.createElement('div');row.className='row';
+      row.innerHTML='<time>'+c[0]+'</time><div><h3>'+c[1]+'</h3><small>'+c[2]+'</small></div><span class="lvl">'+c[3]+'</span>';
+      var b=document.createElement('button');b.textContent=booked[key]?'تم الحجز':'احجز';if(booked[key])b.className='done';
+      b.addEventListener('click',function(){if(booked[key])return;booked[key]=1;b.textContent='تم الحجز';b.className='done'});
+      row.appendChild(b);sched.appendChild(row);
+    });
+  }
+  days.forEach(function(d,i){
+    var b=document.createElement('button');b.setAttribute('role','tab');b.textContent=d;
+    b.addEventListener('click',function(){showDay(i)});tabs.appendChild(b);
+  });
+  showDay(new Date().getDay()===5?6:0);
+
+  /* ---- حاسبة اللياقة ---- */
+  $('#bmiForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var a=+$('#age').value,w=+$('#wt').value,h=+$('#ht').value,adj=+$('#goal').value,out=$('#bmiOut');
+    if(!a||!w||!h){out.textContent='أدخل العمر والوزن والطول لإتمام الحساب.';return}
+    var bmi=w/Math.pow(h/100,2),cat=bmi<18.5?'نحافة':bmi<25?'وزن طبيعي':bmi<30?'وزن زائد':'سمنة';
+    var bmr=10*w+6.25*h-5*a+5,cal=Math.round(bmr*1.55+adj);
+    out.innerHTML='<b>'+bmi.toFixed(1)+' · '+cat+'</b>السعرات اليومية المقترحة لهدفك: نحو '+P.format(cal)+' سعرة. النتيجة تقريبية، ويؤكدها مدربنا بقياس InBody.';
+  });
+
+  /* ---- نافذة الاشتراك ---- */
+  var modal=$('#modal'),lastFocus=null;
+  var prices={'الفضي':199,'الذهبي':349,'البلاتيني':599,'تجربة مجانية':0};
+  function total(){var p=prices[$('#jplan').value],m=+$('#jdur').value;$('#jTotal').textContent=P.format(p?planTotal(p,m):0)+' ر.س'}
+  function openModal(plan){
+    lastFocus=document.activeElement;
+    $('#mForm').hidden=false;$('#mOk').hidden=true;$('#jErr').textContent='';
+    if(plan)$('#jplan').value=plan;$('#jdur').value=dur;total();
+    modal.classList.add('open');document.body.style.overflow='hidden';$('#jn').focus();
+  }
+  function closeModal(){modal.classList.remove('open');document.body.style.overflow='';if(lastFocus)lastFocus.focus()}
+  $$('[data-join]').forEach(function(a){
+    a.addEventListener('click',function(e){e.preventDefault();var pl=a.closest('.plan');openModal(pl?pl.dataset.name:null)});
+  });
+  $('#mClose').addEventListener('click',closeModal);$('#mDone').addEventListener('click',closeModal);
+  modal.addEventListener('click',function(e){if(e.target===modal)closeModal()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open'))closeModal()});
+  $('#jplan').addEventListener('change',total);$('#jdur').addEventListener('change',total);
+  $('#joinForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=$('#jn').value.trim(),p=$('#jp').value.replace(/\s/g,'');
+    if(n.length<3){$('#jErr').textContent='أدخل اسمك الكامل.';return}
+    if(!/^(05\d{8}|\+9665\d{8})$/.test(p)){$('#jErr').textContent='رقم الجوال غير صحيح. اكتبه بصيغة 05XXXXXXXX.';return}
+    /* TODO: أرسل البيانات إلى الخادم هنا (fetch إلى مسار Flask/Django) */
+    $('#mForm').hidden=true;$('#mOk').hidden=false;
+    $('#mOkTxt').textContent='شكرًا '+n.split(' ')[0]+'، سنتصل بك على '+p+' لتأكيد باقة '+$('#jplan').value+'.';
+  });
+})();
+</script>
+</body>
+</html>
